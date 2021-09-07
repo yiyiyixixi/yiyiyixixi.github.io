@@ -31,9 +31,9 @@
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://gitee.com/yiyiyixixi/images/raw/master/Pictures_1/math.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/combine/npm/highlight.js@9.15.8/styles/atom-one-dark.css,npm/justifiedGallery@3.8.1/dist/css/justifiedGallery.min.css,gh/fancyapps/fancybox@3.5.7/dist/jquery.fancybox.min.css,npm/hexo-theme-nexmoe@latest/source/lib/mdui_043tiny/css/mdui.css,npm/hexo-theme-nexmoe@latest/source/lib/iconfont/iconfont.css?v=233" crossorigin>
-    <link rel="stylesheet" href="/css/style.css?v=1631018166189">
+    <link rel="stylesheet" href="/css/style.css?v=1631018416168">
     
-    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1631018166189">
+    <link rel="stylesheet" href="/lib/iconfont/iconfont.css?v=1631018416168">
 <meta name="generator" content="Hexo 5.4.0"></head>
 
 <body class="mdui-drawer-body-left">
@@ -175,67 +175,60 @@
       
       <div class="nexmoe-post-meta nexmoe-rainbow" style="margin:10px 0!important;">
     <a><i class="nexmoefont icon-calendar-fill"></i>2021年09月07日</a>
-    <a><i class="nexmoefont icon-areachart"></i>928 字</a>
+    <a><i class="nexmoefont icon-areachart"></i>936 字</a>
     <a><i class="nexmoefont icon-time-circle-fill"></i>大概 4 分钟</a>
 </div>
 
       
 
-      <h5 id="数列求和、放大法、递推方程">数列求和、放大法、递推方程</h5>
-<span id="more"></span>
+      <h5 id="数列求和、放大法、递推方程"><a href="#数列求和、放大法、递推方程" class="headerlink" title="数列求和、放大法、递推方程"></a>数列求和、放大法、递推方程</h5><span id="more"></span>
 <p>算法设计与分析这门课听的有些迷糊，稍作整理</p>
 <hr>
-<h3 id="数列求和公式">数列求和公式</h3>
-<p>等差：$\displaystyle\sum_{k=1}^{n}a_{k}=\frac{n(a_{1}+a_{n})}{2}$</p>
-<p>等比：$\displaystyle\sum_{k=0}<sup>{n}aq</sup>{k}=\frac{a(1-q^{n+1})}{1-q}$</p>
-<p>调和：$\displaystyle\sum_{k=1}^{n}\frac{1}{k}=\ln{n}+O(1)$</p>
+<h3 id="数列求和公式"><a href="#数列求和公式" class="headerlink" title="数列求和公式"></a>数列求和公式</h3><p>等差：$\displaystyle\sum_{k=1}^{n}a_{k}=\frac{n(a_{1}+a_{n})}{2}$  </p>
+<p>等比：$\displaystyle\sum_{k=0}^{n}aq^{k}=\frac{a(1-q^{n+1})}{1-q}$  </p>
+<p>调和：$\displaystyle\sum_{k=1}^{n}\frac{1}{k}=\ln{n}+O(1)$  </p>
 <p>需要注意的是等比数列的q&lt;1，n趋向正无穷时可以进一步化简，分子只剩a</p>
-<p><strong>一个求和例子：</strong></p>
+<p><strong>一个求和例子：</strong>  </p>
 <p><img data-fancybox="gallery" data-sizes="auto" data-src="https://gitee.com/yiyiyixixi/images/raw/master/Pictures_1/math.png" alt="" class="lazyload"></p>
-<p>现在对二分检索算法进行时间复杂度分析，算法如下:</p>
+<p>现在对二分检索算法进行时间复杂度分析，算法如下:  </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">BinarySearch(T,l,r,x)</span><br><span class="line">输入：数组T，下标从l到r</span><br><span class="line">输出：j</span><br><span class="line">l=1;r=n</span><br><span class="line">while l&lt;=r do</span><br><span class="line">	m=(l+r)/2</span><br><span class="line">	if T[m]=x then return m</span><br><span class="line">	else if T[m]&gt;x then r=m-1</span><br><span class="line">		else l=m+1</span><br><span class="line">return 0</span><br></pre></td></tr></table></figure>
-<p>假设$n=2^{k}-1$,输入有$2n+1$种（x在数组中有$n$种，x不在数组中即间隙中有$n+1$种）<br>
-同时，比较t次的输入个数为$2^{t-1}$（数组正中的位置只需比较1次，位置也是1个）<br>
-比较k次的输入个数要加上不在数组中的$n+1$次，即$2^{k-1}+n+1$次<br>
-各输入概率相等，设$n=2^k-1$故平均时间复杂度:</p>
-<p>$A(n)=\frac{1}{2n+1}[\displaystyle\sum_{t=1}<sup>{k-1}t2</sup>{t-1}+k(2^{k-1}+n+1)]=k-\frac{1}{2}=O(\log{n})$</p>
+<p>假设$n=2^{k}-1$,输入有$2n+1$种（x在数组中有$n$种，x不在数组中即间隙中有$n+1$种）<br>同时，比较t次的输入个数为$2^{t-1}$（数组正中的位置只需比较1次，位置也是1个）<br>比较k次的输入个数要加上不在数组中的$n+1$次，即$2^{k-1}+n+1$次<br>各输入概率相等，设$n=2^k-1$故平均时间复杂度:  </p>
+<p>$A(n)=\frac{1}{2n+1}[\displaystyle\sum_{t=1}^{k-1}t2^{t-1}+k(2^{k-1}+n+1)]=k-\frac{1}{2}=O(\log{n})$</p>
 <p><img data-fancybox="gallery" data-sizes="auto" data-src="https://gitee.com/yiyiyixixi/images/raw/0a7f78a099e74eaa65662e4646e44e24ee85c1c9/Pictures_1/%60PX9O37V3B%7BT89QZ3$ZU341.png" alt="" class="lazyload"></p>
 <hr>
-<h3 id="估算函数上界的放大法">估算函数上界的放大法</h3>
-<p><img data-fancybox="gallery" data-sizes="auto" data-src="https://gitee.com/yiyiyixixi/images/raw/7a0c28461acf0d3cd23dfc19de96d6fe916ae481/Pictures_1/SPZH5NJ%5B9GVB9LPD7CJ535O.png" alt="" class="lazyload"></p>
+<h3 id="估算函数上界的放大法"><a href="#估算函数上界的放大法" class="headerlink" title="估算函数上界的放大法"></a>估算函数上界的放大法</h3><p><img data-fancybox="gallery" data-sizes="auto" data-src="https://gitee.com/yiyiyixixi/images/raw/7a0c28461acf0d3cd23dfc19de96d6fe916ae481/Pictures_1/SPZH5NJ%5B9GVB9LPD7CJ535O.png" alt="" class="lazyload"></p>
 <p><strong>放大法的一个例子</strong></p>
 <p><img data-fancybox="gallery" data-sizes="auto" data-src="https://gitee.com/yiyiyixixi/images/raw/master/Pictures_1/fangdafa.png" alt="" class="lazyload"></p>
 <p>另外，<strong>积分</strong>也可求函数的上下界</p>
 <hr>
-<h3 id="递推方程">递推方程</h3>
-<p>1.汉诺塔递推算法时间复杂度：</p>
-<p>$T(n)=2T(n-1)+1$</p>
+<h3 id="递推方程"><a href="#递推方程" class="headerlink" title="递推方程"></a>递推方程</h3><p>1.汉诺塔递推算法时间复杂度：</p>
+<p>$T(n)=2T(n-1)+1$  </p>
 <p>$T(1)=1$</p>
 <p>可算出：$T(n)=2^n-1$</p>
 <p>2.插入排序算法最坏情况下的时间复杂度（以比较作为基本运算）：</p>
 <p>$W(n)=W(n-1)+n-1$,$W(n)=0$</p>
 <p>可算出：$W(n)=\frac{n(n-1)}{2}$</p>
-<p><strong>解法一：</strong></p>
+<p><strong>解法一：</strong>  </p>
 <ul>
-<li><strong>迭代法</strong>——直接一层层带入求和</li>
+<li><strong>迭代法</strong>——直接一层层带入求和  </li>
 <li><strong>换元迭代</strong>——将n换元进行计算，在结果中换回</li>
 </ul>
-<p>以二分归并法为例，算法如下：</p>
+<p>以二分归并法为例，算法如下：  </p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Mergesort(A,p,r)</span><br><span class="line">输入：数组A[p..r]</span><br><span class="line">输出：按递增顺序排序的数组A</span><br><span class="line">if p&lt;r</span><br><span class="line">then q=(p+r)/2</span><br><span class="line">	Mergesort(A,p,q)</span><br><span class="line">	Mergesort(A,q+1,r)</span><br><span class="line">	Merge(A,p,q,r)</span><br></pre></td></tr></table></figure>
 <p>递推方程如下：</p>
-<p> $W(n)=W(n/2)+n-1$</p>
-<p> $W(1)=0$</p>
-<p>假设 $n=2^k$,换元：</p>
-<p> $W(2<sup>k)=2W(2</sup>{k-1})+2^k-1$</p>
-<p> $W(1)=0$</p>
-<p>然后迭代得到 $n\log{n}-n+1$</p>
+<p>&emsp;$W(n)=W(n/2)+n-1$</p>
+<p>&emsp;$W(1)=0$</p>
+<p>假设&nbsp;$n=2^k$,换元：</p>
+<p>&emsp;$W(2^k)=2W(2^{k-1})+2^k-1$</p>
+<p>&emsp;$W(1)=0$</p>
+<p>然后迭代得到&nbsp;$n\log{n}-n+1$</p>
 <p><strong>数学归纳法</strong>可进行验证</p>
-<p><strong>解法二：</strong></p>
+<p><strong>解法二：</strong>  </p>
 <ul>
 <li><strong>差消法</strong>——化简高阶递推方程</li>
 </ul>
-<p>快速排序法<br>
-有n种可能的输入</p>
+<p>快速排序法<br>有n种可能的输入</p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -267,34 +260,29 @@
 </tr>
 </tbody>
 </table>
-<p>每个输入，比较的次数都是n-1次<br>
-工作量总和：$2[T(1)+…+T(n-1)]+n(n-1)$</p>
-<p>每个位置等概率</p>
-<p>$T(n)=\frac{2}{n}\displaystyle\sum_{i=1}^{n-1}T(i)+O(n)$,$n&gt;2$<br>
-$T(1)=0$</p>
+</div>
+<p>每个输入，比较的次数都是n-1次<br>工作量总和：$2[T(1)+…+T(n-1)]+n(n-1)$ </p>
+<p>每个位置等概率 </p>
+<p>$T(n)=\frac{2}{n}\displaystyle\sum_{i=1}^{n-1}T(i)+O(n)$,$n&gt;2$<br>$T(1)=0$</p>
 <p>差消化简</p>
-<p>$nT(n)-(n-1)T(n-1)=2T(n-1)+cn<sup>2-c(n-1)</sup>2$</p>
+<p>$nT(n)-(n-1)T(n-1)=2T(n-1)+cn^2-c(n-1)^2$</p>
 <p>$nT(n)=(n+1)T(n-1)+c_{1}n$</p>
 <p>$\frac{T(n)}{n+1}=\frac{T(n-1)}{n}+\frac{c_1}{n+1}$</p>
 <p>可得 $T(n)=\Theta(n\log{n})$</p>
-<p><strong>解法三：</strong></p>
+<p><strong>解法三：</strong>  </p>
 <ul>
-<li><strong>递归树</strong>——无关项作为根节点，不断将叶子节点进行替换，直至树中无函数项，生成递归树</li>
+<li><strong>递归树</strong>——无关项作为根节点，不断将叶子节点进行替换，直至树中无函数项，生成递归树  </li>
 </ul>
 <p>将每层的值加在一起即是和</p>
-<p><strong>解法四：</strong></p>
+<p><strong>解法四：</strong>  </p>
 <ul>
 <li><strong>主定理</strong></li>
 </ul>
-<p>$$T(n)=aT(n/b)+f(n)$$</p>
-<p>定理：设a&gt;=,b&gt;1为常数，f(n)为函数，T(n)为非负整数，则</p>
+<script type="math/tex; mode=display">T(n)=aT(n/b)+f(n)</script><p>定理：设a&gt;=,b&gt;1为常数，f(n)为函数，T(n)为非负整数，则</p>
 <p>1.若$f(n)=O(n^{\log_b{a-\epsilon}})$,$\epsilon&gt;0$,有</p>
-<p>$$T(n)=\Theta(n^{\log_b{a}})$$</p>
-<p>2.若$f(n)=\Theta(n^{\log_b{a}})$,$\epsilon&gt;0$,有</p>
-<p>$$T(n)=\Theta(n^{\log_b{a}}\log{n})$$</p>
-<p>3.若$f(n)=\Omega(n^{\log_b{a+\epsilon}})$,$\epsilon&gt;0$,且对于某个常数c&lt;1和充分大的n有$af(n/b) \leq cf(n)$，有</p>
-<p>$$T(n)=\Theta(f(n))$$</p>
-
+<script type="math/tex; mode=display">T(n)=\Theta(n^{\log_b{a}})</script><p>2.若$f(n)=\Theta(n^{\log_b{a}})$,$\epsilon&gt;0$,有</p>
+<script type="math/tex; mode=display">T(n)=\Theta(n^{\log_b{a}}\log{n})</script><p>3.若$f(n)=\Omega(n^{\log_b{a+\epsilon}})$,$\epsilon&gt;0$,且对于某个常数c&lt;1和充分大的n有$af(n/b) \leq cf(n)$，有</p>
+<script type="math/tex; mode=display">T(n)=\Theta(f(n))</script>
   </article>
 
   
@@ -359,7 +347,7 @@ $T(1)=0$</p>
 
  
 
-<script async src="/js/app.js?v=1631018166193"></script>
+<script async src="/js/app.js?v=1631018416172"></script>
 
 <script src="https://cdn.jsdelivr.net/npm/justifiedGallery@3.8.1/dist/js/jquery.justifiedGallery.min.js"></script>
 <script>
